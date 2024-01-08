@@ -8,10 +8,25 @@
     <title>Dyt.Havva Varli</title>
 </head>
 <style>
+    body.dark-theme {
+            background-color: black;
+            color: #fff;
+        }
+
     a:hover {
         background-color: #08769B;
         color: black;
-}
+        }
+    strong {
+        color : #08769B;
+        padding: 15px;
+        
+    }    
+    strong:hover {
+        background-color: #08769B;
+        color: black;
+        border-radius: 5px;
+    }    
 </style>
 
 <body>
@@ -26,7 +41,7 @@
                 <li><a href="#">Yazilarim</a></li>
                 <li><a href="#">Saglikli Tarifler</a></li>
                 <li><a href="#">Iletisim</a></li>
-                <li><a href="#" role="button">Contact</a></li>
+                <li><a href="#" role="button" id="themeToggle">Dark Mode</a></li>
             </ul>
         </nav>
         <hr>
@@ -100,6 +115,22 @@
             </footer>
         </article>
     </main>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.add(savedTheme + '-theme');
+        }
+    </script>
 </body>
 
 </html>
